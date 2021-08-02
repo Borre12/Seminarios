@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        Storage::deleteDirectory('cursos');
-        Storage::makeDirectory('cursos');
+        Storage::deleteDirectory('courses');
+        Storage::makeDirectory('courses');
 
         $this->call(UserSeeder::class);
         $this->call(LevelSeeder::class);
@@ -25,5 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PriceSeeder::class);
         $this->call(PlatformSeeder::class);
         $this->call(CourseSeeder::class);
+        $this->call(PermissionSeeder::class);
+        $this->call(RoleSeeder::class);
     }
 }
