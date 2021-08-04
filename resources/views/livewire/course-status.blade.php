@@ -83,6 +83,7 @@
                                             @endif
                                         </div>
                                         <a class="cursor-pointer" wire:click="changeLesson({{$lesson}})">{{$lesson->name}}</a>
+                                        
                                     </li>
                                 @endforeach
                             </ul>
