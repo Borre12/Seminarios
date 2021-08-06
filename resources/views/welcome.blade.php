@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <section class="bg-cover" style="background-image: url({{asset('img/home/portada.jpg')}})">
+    <section class="bg-cover w-full" style="background-image: url({{asset('img/home/portada.jpg')}})">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-36">
             <div class="w-full md:w-3/4 lg:w-1/2">
                 <h1 class="text-black font-bold text-4xl">Familias fuertes</h1>
@@ -11,33 +11,15 @@
     </section>
 
     <section class="mt-24">
-        <h1 class="text-gray-600 text-center text-3xl mb-6">Contenido</h1>
+        <h1 class="text-gray-600 text-center text-3xl mb-6">Eventos</h1>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8 ">
+            @foreach ($cursos as $curso)
+                @if ($curso->category_id == '4')
+                    <x-course-card :curso='$curso'/>
+                @endif
+            @endforeach
 
-            <article>
-                <figure>
-                    <img class="rounded-xl h-50 w-full object-cover" src="img/home/cat-6463284_640.jpg" alt="">
-                </figure>
-            </article>
-
-            <article>
-                <figure>
-                    <img class="rounded-xl h-50 w-full object-cover" src="img/home/kitten-6479019_640.jpg" alt="">
-                </figure>
-            </article>
-
-            <article>
-                <figure>
-                    <img class="rounded-xl h-50 w-full object-cover" src="img/home/naranjo-de-bulnes-6489260_640.jpg" alt="">
-                </figure>
-            </article>
-
-            <article>
-                <figure>
-                    <img class="rounded-xl h-50 w-full object-cover" src="img/home/kitten-6479019_640.jpg" alt="">
-                </figure>
-            </article>
 
         </div>
     </section>
@@ -62,18 +44,20 @@
         </div>
     </section>
 
-    <section class="my-24">
-        <h1 class="text-center text-3xl text-gray-600">Ultimos cursos</h1>
-        <p class="text-center text-gray-500 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia reprehenderit tenetur quas, 
+    <section class="my-24 mb-6">
+        <h1 class="text-center text-3xl text-gray-600 mb-7">Ultimos cursos</h1>
+        <p class="text-center text-gray-500 text-sm mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia reprehenderit tenetur quas, 
             dignissimos ex odit
         </p>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-36 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-34 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
+            
             @foreach ($cursos as $curso)
-                <x-course-card :curso='$curso'/>
+                @if ($curso->category_id != 4)
+                    <x-course-card :curso='$curso'/>
+                @endif
             @endforeach
         </div>
     </section>
-
 
 </x-app-layout>

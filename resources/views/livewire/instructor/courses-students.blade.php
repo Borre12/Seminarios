@@ -1,7 +1,4 @@
 <div>
-    <x-slot name="course">
-        {{$course->slug}}
-    </x-slot>
 
     <h1 class="text-2xl font-bold mb-4">Estudiantes del curso</h1>
     
@@ -21,6 +18,9 @@
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Email
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Telefono
                         </th>
                         <th scope="col" class="relative px-6 py-3">
                         <span class="sr-only">Edit</span>
@@ -48,6 +48,10 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-sm text-gray-900 "> {{$student->email}}</div>
                     </td>
+
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 "> {{$student->telefono}}</div>
+                        </td>
 
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <a href="" class="text-indigo-600 hover:text-indigo-900">Ver</a>

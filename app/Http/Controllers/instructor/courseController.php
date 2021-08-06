@@ -119,4 +119,10 @@ class courseController extends Controller
     public function goals(Course $course){
         return view('instructor.courses.goals', compact('course'));
     }
+
+    public function status(Course $course){
+        $course->status = 2;
+        $course->save();
+        return back();
+    }
 }
