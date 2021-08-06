@@ -2,7 +2,7 @@
     <section class="bg-gray-700 py-12 mb-10">
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6"> 
             <figure>
-                <img class=" w-full object-cover" src="{{Storage::url($course->image->url)}}" alt="">
+                <img class=" w-full object-cover rounded-lg" src="{{Storage::url($course->image->url)}}" alt="">
             </figure>
 
             <div class="text-white">
@@ -73,6 +73,12 @@
                     {!!$course->description!!}
                 </div>
             </section>
+
+
+
+            @livewire('course-reviews', ['course' => $course], key($course->id))
+
+
         </div>
 
         <div class="order-1 lg:order-2">

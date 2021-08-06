@@ -27,18 +27,12 @@
 
     <section class="mt-24 bg-gray-700 py-12">
         <h1 class="text-center text-white text-3xl">No sabes que curso llevar</h1>
-        <p class="text-center text-white">Dirigete al catalogo de cursos o webinars</p>
+        <p class="text-center text-white">Dirigete al catalogo de cursos</p>
 
         <div class="flex justify-center mt-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
-            <div class="mr-5">
+            <div>
                 <a href="{{route('courses.index')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Ver catalogo de cursos
-                </a>
-            </div>
-
-            <div>
-                <a href="{{route('courses.webinar')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Ver catalogo de webinars
                 </a>
             </div>
         </div>
