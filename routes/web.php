@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
 use App\Http\Livewire\CourseStatus;
+use App\Http\Controllers\AvisoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,3 +37,6 @@ Route::post('courses/{course}/enrolled', [CourseController::class, 'enrolled'])-
 /* Ruta para enviar a la pagina del curso  */
 
 Route::get('course-status/{course}', CourseStatus::class)->name('courses.status')->middleware('auth');
+
+/* Ruta aviso de privacidad*/
+Route::get('/aviso-de-privacidad', AvisoController::class)->name('aviso.privacidad');

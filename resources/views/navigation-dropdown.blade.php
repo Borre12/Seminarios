@@ -9,6 +9,11 @@
             'name' => 'Cursos',
             'route' => route('courses.index'),
             'active' => request()->routeIs('courses.*')
+        ],
+        [
+            'name' => 'Aviso de privacidad',
+            'route' => route('aviso.privacidad'),
+            'active' => request()->routeIs('aviso.*')
         ]
 
     ];

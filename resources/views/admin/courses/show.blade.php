@@ -3,9 +3,9 @@
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6"> 
             <figure>
                 @if ($course->image)
-                    <img class=" h-60 w-full object-cover" src="{{Storage::url($course->image->url)}}" alt="">
+                    <img class=" h-70 w-full object-cover rounded-lg " src="{{Storage::url($course->image->url)}}" alt="">
                 @else
-                    <img class=" h-60 w-full object-cover" src="https://images.pexels.com/photos/6368912/pexels-photo-6368912.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                    <img class=" h-80 w-full object-cover rounded-lg" src="https://images.pexels.com/photos/6368912/pexels-photo-6368912.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
                 @endif
             </figure>
 
@@ -23,7 +23,7 @@
     <div class="container grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         @if(session('info'))
-            <div class="lg-col-span-3" x-data="{open: true}" x-show="open">
+            <div class="lg:col-span-3  w-full" x-data="{open: true}" x-show="open">
                 <div class="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
                     <p>{{session('info')}}</p>
                     <span class="absolute inset-y-0 right-0 flex items-center mr-4">
@@ -96,7 +96,7 @@
                 </ul>
             </section>
 
-            <section>
+            <section class="mb-10">
                 <h1 class="font-bold text-3xl">
                     Descripcion
                 </h1>
@@ -113,7 +113,7 @@
                         <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{$course->teacher->profile_photo_url}}" alt="{{$course->teacher->name}}">
                         <div class="ml-4">
                             <h1 class="font-bold text-gray-500 text-lg">Prof: {{$course->teacher->name}}</h1>
-                            <a class="text-blue-400 text-sm font-bold" href="">{{'@'.Str::slug($course->teacher->name, '')}}
+                            <a class="text-blue-400 text-sm font-bold" href="">{{'@'.Str::slug($course->teacher->name, '')}}</a>
                         </div>
                     </div>
 

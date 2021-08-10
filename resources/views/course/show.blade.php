@@ -88,20 +88,33 @@
                         <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{$course->teacher->profile_photo_url}}" alt="{{$course->teacher->name}}">
                         <div class="ml-4">
                             <h1 class="font-bold text-gray-500 text-lg">Prof: {{$course->teacher->name}}</h1>
-                            <a class="text-blue-400 text-sm font-bold" href="">{{'@'.Str::slug($course->teacher->name, '')}}
+                            <a class="text-blue-400 text-sm font-bold" href="">{{'@'.Str::slug($course->teacher->name, '')}}</a>
                         </div>
                     </div>
                     @can('enrolled', $course)
-
-                        <a class="btn btn-danger btn-block mt-4" href="{{route('courses.status', $course)}}">Continuar con el curso</a>
+                        @if ($course->category_id != 4)
+                            <a class="btn btn-danger btn-block mt-4" href="{{route('courses.status', $course)}}">Continuar con el curso</a>
+                        @else
+                            <a class="btn btn-danger btn-block mt-4" href="{{route('courses.status', $course)}}">Continuar con el Webinar</a>
+                        @endif
                     @else
 
-                    <form action="{{route('courses.enrolled', $course)}}" method="post">
-                        @csrf
-                        <button type="submit" class="btn btn-danger btn-block mt-4">
-                            Inscribirme
-                        </button>
-                    </form>
+                   
+                        @if($course->price->value == 0)
+                            <p class="text-2xl font-bold text-green-800 mt-3 mb-2">Gratis</p>
+                            <form action="{{route('courses.enrolled', $course)}}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-block">
+                                    Inscribirme
+                                </button>
+                            </form>
+                        @elseif($course->category_id == '4')
+                            <p class="text-2xl font-bold text-cool-gray-500 mt-3 mb-2">US${{$course->price->value}}</p>
+                            <a class="btn btn-danger btn-block mt-4" href="{{route('pagos.checkout', $course)}}">Comprar Webinar</a>
+                        @else
+                            <p class="text-2xl font-bold text-cool-gray-500 mt-3 mb-2">US${{$course->price->value}}</p>
+                            <a class="btn btn-danger btn-block mt-4" href="{{route('pagos.checkout', $course)}}">Comprar Curso</a>
+                        @endif
                     @endcan
 
                 </div>
