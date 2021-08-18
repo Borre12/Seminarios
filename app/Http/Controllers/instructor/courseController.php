@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\instructor;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ImageController;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Course;
@@ -47,8 +48,8 @@ class courseController extends Controller
         $course = Course::create($request->all());
        
         if($request->file('file')){
-            $url = Storage::put('courses',$request->file('file')); 
-
+            //$url = Storage::put('courses',$request->file('file')); 
+            $url = app(ImageController::class)->store($file, 'umSeminarios/courses/' . $course->id);
             $course->image()->create([
                 'url' => $url
             ]);
@@ -90,18 +91,17 @@ class courseController extends Controller
         $course->update($request->all());
         
         if($request->file('file')){
-            $url = Storage::put('courses', $request->file('file')); 
 
             if($course->image){
-                Storage::delete($course->image->url);
+                app(ImageController::class)->destroy($course->image->url);
 
                 $course->image->update([
-                    'url' => $url
+                    'url' => app(ImageController::class)->store($request->file('file'), 'umSeminarios/courses/' . $course->id)
                 ]);
 
             }else{
                 $course->image()->create([
-                    'url' => $url
+                    'url' => app(ImageController::class)->store($request->file('file'), 'umSeminarios/courses/' . $course->id)
                 ]);
             }
             
