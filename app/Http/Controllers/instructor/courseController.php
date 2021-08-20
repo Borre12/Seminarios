@@ -49,7 +49,7 @@ class courseController extends Controller
        
         if($request->file('file')){
             //$url = Storage::put('courses',$request->file('file')); 
-            $url = app(ImageController::class)->store($file, 'umSeminarios/courses/' . $course->id);
+            $url = app(ImageController::class)->store($request->file('file'), 'umSeminarios/courses/' . $course->id);
             $course->image()->create([
                 'url' => $url
             ]);
